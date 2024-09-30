@@ -21,7 +21,7 @@ async function handleSearchVoters(event) {
   }
 
   const api_url = await fetch(
-    `http://127.0.0.1:5000/search_voter?search_string=${data.search_string}&type=${data.choices}`
+    `https://www.interrrval.com/search_voter?search_string=${data.search_string}&type=${data.choices}`
   );
   const api_res = await api_url.json();
   if(api_res?.data){
