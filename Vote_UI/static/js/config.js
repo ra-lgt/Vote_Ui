@@ -1,6 +1,6 @@
 window.config = {
     colors: {
-        primary: "#696cff",
+        primary: "#8de9cc",
         secondary: "#8592a3",
         success: "#71dd37",
         info: "#03c3ec",
@@ -17,7 +17,7 @@ window.config = {
         borderColor: "#e4e6e8"
     },
     colors_label: {
-        primary: "#696cff29",
+        primary: "#8de9cc29",
         secondary: "#8592a329",
         success: "#71dd3729",
         info: "#03c3ec29",

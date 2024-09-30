@@ -1,5 +1,17 @@
 let fv, offCanvasEl;
+
+
+function showLoader() {
+  document.getElementById('loader').style.display = 'flex'; // Show loader
+}
+
+function hideLoader() {
+  document.getElementById('loader').style.display = 'none'; // Hide loader
+}
+
+
 async function handleSearchVoters(event) {
+  showLoader()
   event.preventDefault();
   const formData = new FormData(event.target);
   let data = {};
@@ -9,10 +21,12 @@ async function handleSearchVoters(event) {
   }
 
   const api_url = await fetch(
-    `http://127.0.0.1:8081/search_voter?search_string=${data.search_string}&type=${data.choices}`
+    `http://127.0.0.1:5000/search_voter?search_string=${data.search_string}&type=${data.choices}`
   );
   const api_res = await api_url.json();
-  console.log(api_res)
+  if(api_res?.data){
+    hideLoader()
+  }
   document.getElementById('assembly_no').innerHTML=`Assembly No: ${api_res?.data[0]?.assembly_no}`
   document.getElementById('assembly_name').innerHTML=`Assembly Name: ${api_res?.data[0]?.assemblyname}`
 

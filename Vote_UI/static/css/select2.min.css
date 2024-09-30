@@ -404,7 +404,7 @@
 .select2-container--default
   .select2-results__option--highlighted[aria-selected] {
   background-color: #e7e7ff;
-  color: #696cff;
+  color: #8de9cc;
 }
 .select2-container--default .select2-results__group {
   cursor: default;
