@@ -13,6 +13,16 @@ function hideLoader() {
 async function handleSearchVoters(event) {
   showLoader()
   event.preventDefault();
+  var columnTarget;
+
+  // Detect if the screen is mobile (you can adjust the 768px breakpoint)
+  if (window.innerWidth <= 768) {
+      // For mobile view, set targets to 0 (first column)
+      columnTarget = 0;
+  } else {
+      // For larger screens, set targets to 1 (second column)
+      columnTarget = 1;
+  }
   const formData = new FormData(event.target);
   let data = {};
 
@@ -27,8 +37,8 @@ async function handleSearchVoters(event) {
   if(api_res?.data){
     hideLoader()
   }
-  document.getElementById('assembly_no').innerHTML=`Assembly No: ${api_res?.data[0]?.assembly_no}`
-  document.getElementById('assembly_name').innerHTML=`Assembly Name: ${api_res?.data[0]?.assemblyname}`
+  // document.getElementById('assembly_no').innerHTML=`Assembly No: ${api_res?.data[0]?.assembly_no}`
+  // document.getElementById('assembly_name').innerHTML=`Assembly Name: ${api_res?.data[0]?.assemblyname}`
 
   $('.datatables-basic').DataTable().destroy();
 
@@ -52,6 +62,12 @@ async function handleSearchVoters(event) {
         (e.length &&
           ((l = e.DataTable({
             data: api_res?.data,
+            responsive:false,
+            scrollX:true,
+            columnDefs: [
+              { responsivePriority: 1, targets: 1 }, // Ensure first name always shows
+              { responsivePriority: 2, targets: 2 }, // Ensure sex always shows
+          ],
             columns: [
               {
                 data: "",
@@ -93,7 +109,7 @@ async function handleSearchVoters(event) {
                 className: "control",
                 orderable: !1,
                 searchable: !1,
-                responsivePriority: 2,
+                responsivePriority: 3,
                 targets: 0,
                 render: function (e, t, a, s) {
                   return "";
@@ -101,8 +117,8 @@ async function handleSearchVoters(event) {
               },
 
               {
-                targets: 1,
-                responsivePriority: 4,
+                responsivePriority: 1,
+                targets:columnTarget,
                 render: function (e, t, a, s) {
                   var n = a.avatar,
                     l = a.first_name,
@@ -140,10 +156,7 @@ async function handleSearchVoters(event) {
                   );
                 },
               },
-              {
-                responsivePriority: 1,
-                targets: 4,
-              },
+
               {
                 targets: -2,
                 render: function (e, t, a, s) {
