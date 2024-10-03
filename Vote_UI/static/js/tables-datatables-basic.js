@@ -13,6 +13,7 @@ function hideLoader() {
 async function handleSearchVoters(event) {
   showLoader()
   event.preventDefault();
+
   var columnTarget;
 
   // Detect if the screen is mobile (you can adjust the 768px breakpoint)
@@ -23,6 +24,7 @@ async function handleSearchVoters(event) {
       // For larger screens, set targets to 1 (second column)
       columnTarget = 1;
   }
+
   const formData = new FormData(event.target);
   let data = {};
 
@@ -37,8 +39,8 @@ async function handleSearchVoters(event) {
   if(api_res?.data){
     hideLoader()
   }
-  // document.getElementById('assembly_no').innerHTML=`Assembly No: ${api_res?.data[0]?.assembly_no}`
-  // document.getElementById('assembly_name').innerHTML=`Assembly Name: ${api_res?.data[0]?.assemblyname}`
+  document.getElementById('assembly_no').innerHTML=`Assembly No: ${api_res?.data[0]?.assembly_no}`
+  document.getElementById('assembly_name').innerHTML=`Assembly Name: ${api_res?.data[0]?.assemblyname}`
 
   $('.datatables-basic').DataTable().destroy();
 
@@ -62,12 +64,6 @@ async function handleSearchVoters(event) {
         (e.length &&
           ((l = e.DataTable({
             data: api_res?.data,
-            responsive:false,
-            scrollX:true,
-            columnDefs: [
-              { responsivePriority: 1, targets: 1 }, // Ensure first name always shows
-              { responsivePriority: 2, targets: 2 }, // Ensure sex always shows
-          ],
             columns: [
               {
                 data: "",
@@ -109,7 +105,7 @@ async function handleSearchVoters(event) {
                 className: "control",
                 orderable: !1,
                 searchable: !1,
-                responsivePriority: 3,
+                responsivePriority: 1,
                 targets: 0,
                 render: function (e, t, a, s) {
                   return "";
@@ -117,8 +113,8 @@ async function handleSearchVoters(event) {
               },
 
               {
-                responsivePriority: 1,
-                targets:columnTarget,
+                targets: columnTarget,
+                responsivePriority: 2,
                 render: function (e, t, a, s) {
                   var n = a.avatar,
                     l = a.first_name,
@@ -156,7 +152,10 @@ async function handleSearchVoters(event) {
                   );
                 },
               },
-
+              {
+                responsivePriority: 3,
+                targets: 2,
+              },
               {
                 targets: -2,
                 render: function (e, t, a, s) {
@@ -251,91 +250,7 @@ async function handleSearchVoters(event) {
                 },
               },
             },
-            initComplete: function () {
-                this.api()
-                  .columns(-1)
-                  .every(function () {
-                    var e = this,
-                      s = $(
-                        '<select id="ProductStatus" class="form-select text-capitalize"><option value="">Vote Status</option></select>'
-                      )
-                        .appendTo(".product_status")
-                        .on("change", function () {
-                          var t = $.fn.dataTable.util.escapeRegex($(this).val());
-                          e.search(t ? "^" + t + "$" : "", !0, !1).draw();
-                        });
-                    e.data()
-                      .unique()
-                      .sort()
-                      .each(function (t, e) {
-                        s.append(
-                          '<option value="' +
-                            o[t].title +
-                            '">' +
-                            o[t].title +
-                            "</option>"
-                        );
-                      });
-                      $('#ProductStatus').select2();
-                  }),
 
-                  this.api()
-                    .columns(2)
-                    .every(function () {
-                      var e = this,
-                        s = $(
-                          '<select id="ProductCategory" class="form-select text-capitalize"><option value="">Sex</option></select>'
-                        )
-                          .appendTo(".product_category")
-                          .on("change", function () {
-                            var t = $.fn.dataTable.util.escapeRegex($(this).val());
-                            e.search(t ? "^" + t + "$" : "", !0, !1).draw();
-        
-                          });
-                      e.data()
-                        .unique()
-                        .sort()
-                        .each(function (t, e) {
-                          console.log(t,e)
-
-                          s.append(
-                            '<option value="' +
-                              t +
-                              '">' +
-                              t +
-                              "</option>"
-                          );
-                        });
-                        $('#ProductCategory').select2();
-                    }),
-                  this.api()
-                    .columns(-3)
-                    .every(function () {
-                      var e = this,
-                        s = $(
-                          '<select id="ProductStock" class="form-select text-capitalize"><option value=""> Booth No </option></select>'
-                        )
-                          .appendTo(".product_stock")
-                          .on("change", function () {
-                            var t = $.fn.dataTable.util.escapeRegex($(this).val());
-                            e.search(t ? "^" + t + "$" : "", !0, !1).draw();
-                          });
-                      e.data()
-                        .unique()
-                        .sort()
-                        .each(function (t, e) {
-        
-                          s.append(
-                            '<option value="' +
-                              t +
-                              '">' +
-                              t +
-                              "</option>"
-                          );
-                        });
-                        $('#ProductStock').select2();
-                    });
-              },
           })),
           $(".dataTables_length").addClass("mt-0 mt-md-3 me-3")));
           
