@@ -37,10 +37,11 @@ async function handleSearchVoters(event) {
   );
   const api_res = await api_url.json();
   if(api_res?.data){
+    console.log(api_res?.data)
     hideLoader()
   }
-  document.getElementById('assembly_no').innerHTML=`Assembly No: ${api_res?.data[0]?.assembly_no}`
-  document.getElementById('assembly_name').innerHTML=`Assembly Name: ${api_res?.data[0]?.assemblyname}`
+  // document.getElementById('assembly_no').innerHTML=`Assembly No: ${api_res?.data[0]?.assembly_no}`
+  // document.getElementById('assembly_name').innerHTML=`Assembly Name: ${api_res?.data[0]?.assemblyname}`
 
   $('.datatables-basic').DataTable().destroy();
 
@@ -75,6 +76,12 @@ async function handleSearchVoters(event) {
                 data: "sex",
               },
               {
+                data: "part_no",
+              },
+              {
+                data: "srno",
+              },
+              {
                 data: "age",
               },
               {
@@ -95,9 +102,7 @@ async function handleSearchVoters(event) {
               {
                 data: "boothaddress",
               },
-              {
-                data: "voted",
-              },
+
 
             ],
             columnDefs: [
@@ -154,7 +159,11 @@ async function handleSearchVoters(event) {
               },
               {
                 responsivePriority: 3,
-                targets: 2,
+                targets: 3,
+              },
+              {
+                responsivePriority: 4,
+                targets: 4,
               },
               {
                 targets: -2,
@@ -180,30 +189,6 @@ async function handleSearchVoters(event) {
                       5: {
                         title: "Applied",
                         class: " bg-label-info",
-                      },
-                    };
-                  return void 0 === n[a]
-                    ? e
-                    : '<span class="badge ' +
-                        n[a].class +
-                        '">' +
-                        n[a].title +
-                        "</span>";
-                },
-              },
-              {
-                targets: -1,
-                render: function (e, t, a, s) {
-                  var a = a.voted,
-                    n = {
-
-                      'Yes': {
-                        title: "Voted",
-                        class: " bg-label-success",
-                      },
-                      'No': {
-                        title: "Not Voted",
-                        class: " bg-label-danger",
                       },
                     };
                   return void 0 === n[a]

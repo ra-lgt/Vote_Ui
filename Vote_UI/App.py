@@ -22,9 +22,9 @@ def search_voter():
     if type == "Name":
         cursor.execute(
             """
-            SELECT assembly_no, l_last_name, l_first_name, l_middle_name, e_last_name, e_first_name, e_middle_name, sex,
+            SELECT assembly_no,part_no,srno,l_last_name, l_first_name, l_middle_name, e_last_name, e_first_name, e_middle_name, sex,
             house_no, age, vcardid, l_village, e_village, l_assemblyname, e_assemblyname, l_address, e_address, booth_no,
-            l_boothaddress, e_boothaddress, voted 
+            l_boothaddress, e_boothaddress 
             FROM voters 
             WHERE LOWER(e_last_name) LIKE LOWER(?) 
             OR LOWER(e_first_name) LIKE LOWER(?) 
@@ -35,9 +35,9 @@ def search_voter():
     else:
         cursor.execute(
             """
-            SELECT assembly_no, l_last_name, l_first_name, l_middle_name, e_last_name, e_first_name, e_middle_name, sex,
+            SELECT assembly_no,part_no,srno,l_last_name, l_first_name, l_middle_name, e_last_name, e_first_name, e_middle_name, sex,
             house_no, age, vcardid, l_village, e_village, l_assemblyname, e_assemblyname, l_address, e_address, booth_no,
-            l_boothaddress, e_boothaddress, voted 
+            l_boothaddress, e_boothaddress 
             FROM voters
             WHERE LOWER(vcardid) = LOWER(?)
             """,

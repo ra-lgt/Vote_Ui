@@ -133,6 +133,122 @@
                     
 
                     <style>
+                        /* Basic Slider Styling */
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px; /* Set max width for larger screens */
+    margin: auto;
+    overflow: hidden;
+}
+
+.list {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.item {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 0; /* Remove padding to align edges */
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensure the image covers the area */
+}
+
+/* Buttons Styling */
+.buttons button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
+}
+
+/* Dots Styling */
+.dots {
+    text-align: center;
+    padding: 10px;
+}
+
+.dots li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: gray;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.dots .active {
+    background-color: black;
+}
+
+/* Media Query for Mobile */
+@media screen and (max-width: 768px) {
+    .slider {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .item {
+        min-width: 100%;
+    }
+
+    .item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover; /* Ensures image covers the slider without stretching */
+    }
+
+    .buttons button {
+        padding: 5px;
+    }
+
+    .dots li {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* Media Query for very small screens (mobile) */
+@media screen and (max-width: 480px) {
+    .slider {
+        height: auto;
+    }
+
+    .item img {
+        width: 100%;
+        height: auto;
+        object-fit: contain; /* Ensures full image is shown without distortion */
+    }
+
+    .buttons button {
+        font-size: 12px;
+        padding: 3px;
+    }
+
+    .dots li {
+        width: 6px;
+        height: 6px;
+    }
+}
+
                        .loader {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -376,6 +492,8 @@ input[type="text"] {
                                             <th></th>
                                             <th>name</th>
                                             <th>sex</th>
+                                            <th>Part no</th>
+                                            <th>Sr no</th>
                                             <th>age</th>
                                             <th>house no</th>
                                             <th>village</th>
@@ -383,7 +501,6 @@ input[type="text"] {
                                             <th>address</th>
                                             <th>booth no</th>
                                             <th>booth address</th>
-                                            <th>voted</th>
                                         </tr>
                                     </thead>
                                 </table>
