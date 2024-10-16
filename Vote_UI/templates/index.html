@@ -7,7 +7,8 @@
 
 <head>
     <meta charset="utf-8" />
-  
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
     <title>Voters</title>
 
 
@@ -76,7 +77,32 @@
                         <div id="loader" class="loader">
                             <div class="loader-spinner"></div>
                         </div>
-                     <img src="{{url_for('static',filename='/images/image_1.jpeg')}}" alt="image1">
+                      <div class="slider">
+                            <div class="list">
+                              <div class="item">
+                                    <img src="{{url_for('static',filename='/images/image_1.jpeg')}}" alt="image1">
+                                </div>
+                                <div class="item">
+                                    <img src="{{url_for('static',filename='/images/image_2.jpeg')}}" alt="image2">
+                                </div>
+                                <div class="item">
+                                    <img src="{{url_for('static',filename='/images/image_3.jpeg')}}" alt="image3">
+                                </div>
+                            </div>
+                            <!--button prev and next-->
+                            <div class="buttons">
+                                <button id="prev"><</button>
+                            <button id="next">></button>
+                            </div>
+                            <!--Dots (if 5 items => 5 dots)-->
+                            <ul class="dots">
+                               <li class="active"></li>
+                               <li></li>
+                               <li></li>
+                               <li></li>
+                               <li></li> 
+                            </ul>
+                        </div>
                         <div class="s003">
                             <form onsubmit="handleSearchVoters(event)">
                               <div class="inner-form">
