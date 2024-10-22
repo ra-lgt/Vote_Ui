@@ -3,16 +3,18 @@
 
 
 
-<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact " >
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact ">
 
 <head>
     <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title>Voters</title>
 
 
-    <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 Admin Dashboard built for developers!" />
+    <meta name="description"
+        content="Most Powerful &amp; Comprehensive Bootstrap 5 Admin Dashboard built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://themeselection.com/item/sneat-dashboard-pro-bootstrap/">
@@ -23,40 +25,13 @@
     <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='/img/favicon/favicon.ico')}}" />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <link href="{{url_for('static',filename='/css/select2.min.css')}}   " rel="stylesheet" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Icons -->
-    <link rel="stylesheet" href="{{url_for('static',filename='/vendor/fonts/boxicons.css')}}" />
-    <link rel="stylesheet" href="{{url_for('static',filename='/vendor/fonts/fontawesome.css')}}" />
-    <link rel="stylesheet" href="{{url_for('static',filename='/vendor/fonts/flag-icons.css')}}" />
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="{{url_for('static',filename='/vendor/css/rtl/core.css')}}"  />
-    <link rel="stylesheet" href="{{url_for('static',filename='/vendor/css/rtl/theme-default.css')}}"  />
-
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{url_for('static',filename='/vendor/libs/datatables-bs5/datatables.bootstrap5.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css')}}">
-    <!-- Row Group CSS -->
-    <link rel="stylesheet" href="{{url_for('static',filename='/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css')}}">
-    <!-- Form Validation -->
-    <link rel="stylesheet" href="{{url_for('static',filename='/vendor/libs/@form-validation/form-validation.css')}}" />
 
     <!-- Page CSS -->
 
 
     <!-- Helpers -->
-    <script src="{{url_for('static',filename='/vendor/js/helpers.js')}}"></script>
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js')}} in the <head> section -->
-    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js')}}.  -->
-    <script src="{{url_for('static',filename='/vendor/js/template-customizer.js')}}"></script>
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{url_for('static',filename='/js/config.js')}}"></script>
+
 
 </head>
 
@@ -64,476 +39,664 @@
 
 
     <!-- ?PROD Only: Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Layout wrapper -->
-    
-       
 
-                    <link href="{{url_for('static',filename='/css/main.css')}}" rel="stylesheet" />
-                    <script src="{{url_for('static',filename='/js/extention/choices.js')}}"></script>
-                    <body>
-                        <div id="loader" class="loader">
-                            <div class="loader-spinner"></div>
+
+
+    <link href="{{url_for('static',filename='/css/main.css')}}" rel="stylesheet" />
+
+    <body>
+
+        <div class="slider">
+            <div class="list">
+                <div class="item">
+                    <img src="{{url_for('static',filename='/images/image_1.jpeg')}}" alt="image1">
+                </div>
+                <div class="item">
+                    <img src="{{url_for('static',filename='/images/image_2.jpeg')}}" alt="image2">
+                </div>
+                <div class="item">
+                    <img src="{{url_for('static',filename='/images/image_3.jpeg')}}" alt="image3">
+                </div>
+            </div>
+            <!--button prev and next-->
+            <div class="buttons">
+                <button id="prev">
+                    </button>
+                        <button id="next">></button>
+            </div>
+            <!--Dots (if 5 items => 5 dots)-->
+            <ul class="dots">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="s003 col-5">
+            <form id="searchForm">
+                <div class="inner-form">
+                    <div class="input-field first-wrap">
+                        <div class="input-select">
+                            <select data-trigger="" id="choices">
+                                <option placeholder="">Search By</option>
+                                <option>Name</option>
+                                <option>vcardid</option>
+
+                            </select>
                         </div>
-                      <div class="slider">
-                            <div class="list">
-                              <div class="item">
-                                 <img src="{{url_for('static',filename='/images/image_1.jpeg')}}" alt="image1">
-                                </div>
-                                <div class="item">
-                                 <img src="{{url_for('static',filename='/images/image_2.jpeg')}}" alt="image2">
-                                </div>
-                                <div class="item">
-                                <img src="{{url_for('static',filename='/images/image_3.jpeg')}}" alt="image3">
-                                </div>
-                            </div>
-                            <!--button prev and next-->
-                            <div class="buttons">
-                                <button id="prev"><</button>
-                            <button id="next">></button>
-                            </div>
-                            <!--Dots (if 5 items => 5 dots)-->
-                            <ul class="dots">
-                               <li class="active"></li>
-                               <li></li>
-                               <li></li>
-                               <li></li>
-                               <li></li> 
-                            </ul>
-                        </div>
-                        <div class="s003 col-5">
-                            <form onsubmit="handleSearchVoters(event)">
-                              <div class="inner-form">
-                                <div class="input-field first-wrap">
-                                  <div class="input-select">
-                                    <select data-trigger="" name="choices">
-                                      <option placeholder="">Search By</option>
-                                      <option>Name</option>
-                                      <option>vcardid</option>
-
-                                    </select>
-                                  </div>
-                                </div>
-                                <div class="input-field second-wrap">
-                                  <input id="search" type="text" placeholder="Enter Keywords?" name="search_string"/>
-                                </div>
-                                <div class="input-field third-wrap">
-                                  <button class="btn-search" type="submit">
-                                    <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                      <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
-                                    </svg>
-                                  </button>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                       
-                    
-
-                    <style>
-                        /* Basic Slider Styling */
-.slider {
-    position: relative;
-    width: 100%;
-    max-width: 1000px; /* Set max width for larger screens */
-    margin: auto;
-    overflow: hidden;
-}
-
-.list {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.item {
-    min-width: 100%;
-    box-sizing: border-box;
-    padding: 0; /* Remove padding to align edges */
-}
-
-.item img {
-    width: 100%;
-    height: auto;
-    object-fit: cover; /* Ensure the image covers the area */
-}
-
-/* Buttons Styling */
-.buttons button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-}
-
-#prev {
-    left: 10px;
-}
-
-#next {
-    right: 10px;
-}
-
-/* Dots Styling */
-.dots {
-    text-align: center;
-    padding: 10px;
-}
-
-.dots li {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: gray;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.dots .active {
-    background-color: black;
-}
-
-/* Media Query for Mobile */
-@media screen and (max-width: 768px) {
-    .slider {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .item {
-        min-width: 100%;
-    }
-
-    .item img {
-        width: 100%;
-        height: auto;
-        object-fit: cover; /* Ensures image covers the slider without stretching */
-    }
-
-    .buttons button {
-        padding: 5px;
-    }
-
-    .dots li {
-        width: 8px;
-        height: 8px;
-    }
-}
-
-/* Media Query for very small screens (mobile) */
-@media screen and (max-width: 480px) {
-    .slider {
-        height: auto;
-    }
-
-    .item img {
-        width: 100%;
-        height: auto;
-        object-fit: contain; /* Ensures full image is shown without distortion */
-    }
-
-    .buttons button {
-        font-size: 12px;
-        padding: 3px;
-    }
-
-    .dots li {
-        width: 6px;
-        height: 6px;
-    }
-}
-
-                       .loader {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgba(0, 0, 0, 0.7); /* Dark background with opacity */
-    z-index: 9999; /* Sit on top */
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
-}
-
-.loader-spinner {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #8de9cc; /* Blue */
-    border-radius: 50%; /* Round */
-    width: 80px; /* Size of the spinner */
-    height: 80px; /* Size of the spinner */
-    animation: spin 2s linear infinite; /* Spin animation */
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-                        .inner-form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-
-.input-select select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: white;
-  font-size: 14px;
-  color: #888;
-  appearance: none;
-  outline: none;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  height: 68px;
-}
-
-.input-select {
-  position: relative;
-}
-
-.input-select::after {
-  content: '\25BC'; /* Down arrow */
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  pointer-events: none;
-  font-size: 12px;
-  color: #888;
-}
-
-input[type="text"] {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-  width: 100%;
-}
-
-.btn-search {
-  display: inline-block;
-  background-color: #ff6b6b;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-search:hover {
-  background-color: #ff4a4a;
-}
-
-.btn-search svg {
-  fill: white;
-  width: 16px;
-  height: 16px;
-}
-*::selection{
-    background-color: #e7e7ff !important;
-
-}
-
-                    .slider{
-                        max-width: 100vw;
-                        height: 70vh;
-                        margin: auto;
-                        position: relative;
-                        overflow: hidden;
-                        margin-top: 10vh;
-                    }
-                    .list {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        height: 100%;
-                        display: flex;
-                        width: max-content;
-                        transition: 1s;
-                    }
-                    .list img{
-                        width: 100vw;
-                        max-width: 100vw;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                    .buttons{
-                        position: absolute;
-                        top: 45%;
-                        left: 5%;
-                        width: 90%;
-                        display: flex;
-                        justify-content: space-between;
-                    }
-                    .buttons button {
-                        width: 50px;
-                        height: 50px;
-                        border-radius: 505;
-                        background-color: #fff5;
-                        color: #fff;
-                        border: none;
-                        font-family: monospace;
-                        font-weight: bold;
-                    }
-                    .dots{
-                        position: absolute;
-                        bottom: 10px;
-                        color: #fff;
-                        left: 0;
-                        width: 100%;
-                        margin: 0;
-                        padding: 0;
-                        display: flex;
-                        justify-content: center;
-                        transition: 1s;
-                    }
-                    .dots li {
-                        list-style: none;
-                        width: 10px;
-                        height: 10px;
-                        background-color: #fff;
-                        margin: 20px;
-                        border-radius: 20px;
-                    }
-                    .dots li.active {
-                        width: 30px;
-                    }
-                    @media screen and ( max-width: 768px) { 
-                        .slider {
-                            height: 400px;
-                        }
-                        
-                    }
-                    .s003{
-                        min-height: unset !important;
-                        background-color: unset !important;
-                    }
-                    </style>
-                    <script>
-                        let list = document.querySelector('.slider .list');
-                    let items = document.querySelectorAll('.slider .list .item');
-                    let dots = document.querySelectorAll('.slider .dots li');
-                    let prev = document.getElementById('prev');
-                    let next = document.getElementById('next');
-                    
-                    let active = 0;
-                    let lengthitems = items.length - 1;
-                    
-                    next.onclick = function() {
-                        if (active + 1 > lengthitems) {
-                            active = 0;
-                        } else {
-                            active = active + 1;
-                        }
-                        reloadslider();
-                    }
-                    
-                    prev.onclick = function() {
-                        if (active - 1 < 0) {
-                            active = lengthitems;
-                        } else {
-                            active = active - 1;
-                        }
-                        reloadslider();
-                    }
-                    
-                    let autoslide = setInterval(() => { next.click(); }, 6000);
-                    
-                    function reloadslider() {
-                        let checkleft = items[active].offsetLeft;
-                        list.style.left = -checkleft + 'px';
-                    
-                        let lastactiveDot = document.querySelector('.slider .dots li.active');
-                        if (lastactiveDot) lastactiveDot.classList.remove('active');
-                        dots[active].classList.add('active');
-                    }
-                    
-                    dots.forEach((li, key) => {
-                        li.addEventListener('click', function() {
-                            active = key;
-                            reloadslider();
-                        })
-                    })
-                    </script>
-
-
-                    <div class="container-xxl flex-grow-1 container-p-y">
-
-
-                        <!-- DataTable with Buttons -->
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title" style="display: flex; justify-content: center; align-items: center;">Voters list</h5>
-
-                                <h5 class="card-title" id="assembly_no"></h5>
-                                <h5 class="card-title" id="assembly_name"></h5>
-                                <div class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0">
-                                <div class="col-md-4 product_status"></div>
-                                <div class="col-md-4 product_category"></div>
-                                <div class="col-md-4 product_stock"></div>
-                                </div>
-                                </div>
-                            <div class="card-datatable table-responsive">
-                                <table class="datatables-basic table border-top">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>name</th>
-                                            <th>sex</th>
-                                            <th>Part no</th>
-                                            <th>Sr no</th>
-                                            <th>age</th>
-                                            <th>house no</th>
-                                            <th>village</th>
-                                            <th>vcardid</th>
-                                            <th>address</th>
-                                            <th>booth no</th>
-                                            <th>booth address</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-
                     </div>
-                   
+                    <div class="input-field second-wrap">
+                        <input type="text" placeholder="Enter Keywords?" id="search_value" />
+                    </div>
+                    <div class="input-field third-wrap">
+                        <button class="btn-search" type="submit">
+                            <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fas"
+                                data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path fill="currentColor"
+                                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-                    <div class="content-backdrop fade"></div>
-        
+
+
+        <style>
+            /* Basic Slider Styling */
+            .slider {
+                position: relative;
+                width: 100%;
+                max-width: 1000px;
+                /* Set max width for larger screens */
+                margin: auto;
+                overflow: hidden;
+            }
+
+            .list {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+            }
+
+            .item {
+                min-width: 100%;
+                box-sizing: border-box;
+                padding: 0;
+                /* Remove padding to align edges */
+            }
+
+            .item img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                /* Ensure the image covers the area */
+            }
+
+            /* Buttons Styling */
+            .buttons button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+            }
+
+            #prev {
+                left: 10px;
+            }
+
+            #next {
+                right: 10px;
+            }
+
+            /* Dots Styling */
+            .dots {
+                text-align: center;
+                padding: 10px;
+            }
+
+            .dots li {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: gray;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+
+            .dots .active {
+                background-color: black;
+            }
+
+            /* Media Query for Mobile */
+            @media screen and (max-width: 768px) {
+                .slider {
+                    max-width: 100%;
+                    height: auto;
+                }
+
+                .item {
+                    min-width: 100%;
+                }
+
+                .item img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    /* Ensures image covers the slider without stretching */
+                }
+
+                .buttons button {
+                    padding: 5px;
+                }
+
+                .dots li {
+                    width: 8px;
+                    height: 8px;
+                }
+            }
+
+            /* Media Query for very small screens (mobile) */
+            @media screen and (max-width: 480px) {
+                .slider {
+                    height: auto;
+                }
+
+                .item img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                    /* Ensures full image is shown without distortion */
+                }
+
+                .buttons button {
+                    font-size: 12px;
+                    padding: 3px;
+                }
+
+                .dots li {
+                    width: 6px;
+                    height: 6px;
+                }
+            }
+
+            .loader {
+                display: none;
+                /* Hidden by default */
+                position: fixed;
+                /* Stay in place */
+                left: 0;
+                top: 0;
+                width: 100%;
+                /* Full width */
+                height: 100%;
+                /* Full height */
+                background-color: rgba(0, 0, 0, 0.7);
+                /* Dark background with opacity */
+                z-index: 9999;
+                /* Sit on top */
+                align-items: center;
+                /* Center items vertically */
+                justify-content: center;
+                /* Center items horizontally */
+            }
+
+            .loader-spinner {
+                border: 16px solid #f3f3f3;
+                /* Light grey */
+                border-top: 16px solid #8de9cc;
+                /* Blue */
+                border-radius: 50%;
+                /* Round */
+                width: 80px;
+                /* Size of the spinner */
+                height: 80px;
+                /* Size of the spinner */
+                animation: spin 2s linear infinite;
+                /* Spin animation */
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .inner-form {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+
+            .input-select select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                background-color: white;
+                font-size: 14px;
+                color: #888;
+                appearance: none;
+                outline: none;
+                cursor: pointer;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                height: 68px;
+            }
+
+            .input-select {
+                position: relative;
+            }
+
+            .input-select::after {
+                content: '\25BC';
+                /* Down arrow */
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%);
+                pointer-events: none;
+                font-size: 12px;
+                color: #888;
+            }
+
+            input[type="text"] {
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 14px;
+                width: 100%;
+            }
+
+            .btn-search {
+                display: inline-block;
+                background-color: #ff6b6b;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .btn-search:hover {
+                background-color: #ff4a4a;
+            }
+
+            .btn-search svg {
+                fill: white;
+                width: 16px;
+                height: 16px;
+            }
+
+            *::selection {
+                background-color: #e7e7ff !important;
+
+            }
+
+            .slider {
+                max-width: 100vw;
+                height: 70vh;
+                margin: auto;
+                position: relative;
+                overflow: hidden;
+                margin-top: 10vh;
+            }
+
+            .list {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                display: flex;
+                width: max-content;
+                transition: 1s;
+            }
+
+            .list img {
+                width: 100vw;
+                max-width: 100vw;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .buttons {
+                position: absolute;
+                top: 45%;
+                left: 5%;
+                width: 90%;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .buttons button {
+                width: 50px;
+                height: 50px;
+                border-radius: 505;
+                background-color: #fff5;
+                color: #fff;
+                border: none;
+                font-family: monospace;
+                font-weight: bold;
+            }
+
+            .dots {
+                position: absolute;
+                bottom: 10px;
+                color: #fff;
+                left: 0;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                transition: 1s;
+            }
+
+            .dots li {
+                list-style: none;
+                width: 10px;
+                height: 10px;
+                background-color: #fff;
+                margin: 20px;
+                border-radius: 20px;
+            }
+
+            .dots li.active {
+                width: 30px;
+            }
+
+            @media screen and (max-width: 768px) {
+                .slider {
+                    height: 400px;
+                }
+
+            }
+
+            .s003 {
+                min-height: unset !important;
+                background-color: unset !important;
+            }
+        </style>
+        <script>
+            let list = document.querySelector('.slider .list');
+            let items = document.querySelectorAll('.slider .list .item');
+            let dots = document.querySelectorAll('.slider .dots li');
+            let prev = document.getElementById('prev');
+            let next = document.getElementById('next');
+
+            let active = 0;
+            let lengthitems = items.length - 1;
+
+            next.onclick = function () {
+                if (active + 1 > lengthitems) {
+                    active = 0;
+                } else {
+                    active = active + 1;
+                }
+                reloadslider();
+            }
+
+            prev.onclick = function () {
+                if (active - 1 < 0) {
+                    active = lengthitems;
+                } else {
+                    active = active - 1;
+                }
+                reloadslider();
+            }
+
+            let autoslide = setInterval(() => { next.click(); }, 6000);
+
+            function reloadslider() {
+                let checkleft = items[active].offsetLeft;
+                list.style.left = -checkleft + 'px';
+
+                let lastactiveDot = document.querySelector('.slider .dots li.active');
+                if (lastactiveDot) lastactiveDot.classList.remove('active');
+                dots[active].classList.add('active');
+            }
+
+            dots.forEach((li, key) => {
+                li.addEventListener('click', function () {
+                    active = key;
+                    reloadslider();
+                })
+            })
+        </script>
+
+
+<style>
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+    }
+
+    .card-body {
+        padding: 15px;
+        background-color: #f9f9f9;
+    }
+
+    .card-title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .card-text {
+        font-size: 1em;
+        color: #555;
+        margin: 5px 0;
+    }
+
+    .card-text strong {
+        color: #000;
+    }
+
+    .card p {
+        line-height: 1.5;
+    }
+
+    /* Loader styles */
+    #loader {
+        display: none;
+        margin: 20px auto;
+        text-align: center;
+    }
+</style>
+
+
+        <!-- DataTable with Buttons -->
+        <div class="cardMain" style="width: 100%;">
+            <div class="card-container" id="cardContainer">
+                <!-- Initial Cards (optional, can be empty if you want to load them all via the API) -->
+                <div id="loader" class="loader" style="display: none;">
+                    <div class="loader-spinner"></div> <!-- Customize your loader as needed -->
+                </div>
+            </div>
+        </div>
+
+        <div class="content-backdrop fade"></div>
         <div class="layout-overlay layout-menu-toggle"></div>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const typeSelect = document.getElementById('choices');
+                const searchInput = document.getElementById('search_value');
+                let currentPage = 0; // Start from page 0
+                let isLoading = false; // To track loading state
+        
+                function sleep(ms) {
+                    return new Promise(resolve => setTimeout(resolve, ms));
+                }
+        
+                async function fetchData(page, type, search_string) {
+                    let data={
+                        data:[]
+                    }
+                    if(type=="" || search_string==""){
+                        return data
+                    }
+                    const apiUrl = `https://portal.voterapp.in/search_voter?search_string=${search_string}&type=${type}&page=${page}`;
+                    const response = await fetch(apiUrl);
+                    data = await response.json();
+                    return data; // Adjust according to your API response structure
+                }
+        
+                function createCard(cardData) {
+                    const card = document.createElement('div');
+                    card.className = 'card mb-3'; // Add margin for spacing
+                    card.innerHTML = `
+                    <div class="card-body">
+                        <h3 class="card-title">${cardData.first_name}</h3>
+                        <p class="card-text"><strong>Last Name:</strong> ${cardData.last_name}</p>
+                        <p class="card-text"><strong>Middle Name:</strong> ${cardData.middle_name}</p>
+                        <p class="card-text"><strong>Sex:</strong> ${cardData.sex}</p>
+                        <p class="card-text"><strong>Age:</strong> ${cardData.age}</p>
+                        <p class="card-text"><strong>VCard ID:</strong> ${cardData.vcardid}</p>
+                        <p class="card-text"><strong>Assembly No:</strong> ${cardData.assembly_no}</p>
+                        <p class="card-text"><strong>Part No:</strong> ${cardData.part_no}</p>
+                        <p class="card-text"><strong>SR No:</strong> ${cardData.srno}</p>
+                        <p class="card-text"><strong>House No:</strong> ${cardData.house_no}</p>
+                        <p class="card-text"><strong>Village:</strong> ${cardData.village}</p>
+                        <p class="card-text"><strong>Assembly Name:</strong> ${cardData.assemblyname}</p>
+                        <p class="card-text"><strong>Address:</strong> ${cardData.address}</p>
+                        <p class="card-text"><strong>Booth No:</strong> ${cardData.booth_no}</p>
+                        <p class="card-text"><strong>Booth Address:</strong> ${cardData.boothaddress}</p>
+                    </div>
+                `;
+                    return card;
+                }
+        
+                async function handleSearchVoters(event) {
+                    if (event) {
+                        event.preventDefault(); // Prevent default form submission
+                    }
+        
+                    if (isLoading) return; // Prevent multiple calls while loading
+                    isLoading = true; // Set loading state
+        
+                    document.getElementById('loader').style.display = 'block'; // Show loader
+                    const data = await fetchData(currentPage, typeSelect.value, searchInput.value);
+                    const cardContainer = document.getElementById('cardContainer');
+        
+                    if (data && data.data.length > 0) {
+                        data.data.forEach(value => {
+                            const card = createCard(value); // Adjust according to your API response
+                            cardContainer.appendChild(card);
+                        });
+                        currentPage++; // Increment page for next fetch
+                    } else {
+                        console.log('No more data available');
+                    }
+        
+                    document.getElementById('loader').style.display = 'none'; // Hide loader
+                    isLoading = false; // Reset loading state
+                }
+        
+                // Handle form submission
+                const form = document.getElementById('searchForm'); // Adjust according to your form ID
+                form.addEventListener('submit', handleSearchVoters);
+        
+                const observer = new IntersectionObserver(async entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !isLoading) {
+                            if (typeSelect.value === "" && searchInput.value === "") {
+                                return; // Do not fetch if no type or search string
+                            }
+                            console.log("Loader is visible. Triggering data load...");
+                            handleSearchVoters(); 
+                        }
+                    });
+                }, {
+                    rootMargin: '100px', // Adjust the margin as needed
+                });
+        
+                // Observe the loader element
+                const loader = document.getElementById('loader');
+                observer.observe(loader);
+        
+                window.addEventListener('scroll', function () {
+                    const scrollPosition = window.innerHeight + window.scrollY;
+                    const threshold = document.body.offsetHeight - 200; // Adjust threshold as needed
+                    if (scrollPosition >= threshold && !isLoading && searchInput.value!="" && typeSelect.value!="") {
+                        loader.style.display = 'block'; // Show loader if near bottom
+                    }
+                });
+            });
+        </script>
+        
+        
+
+        <script>
+           
+        </script>
+
+        <style>
+            .card-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .card {
+                background-color: white;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 20px;
+                width: calc(25% - 40px);
+                /* 4 cards per row */
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s;
+            }
+
+            .card:hover {
+                transform: scale(1.05);
+            }
+
+            @media (max-width: 768px) {
+                .card {
+                    width: calc(50% - 40px);
+                    /* 2 cards per row */
+                }
+            }
+
+            @media (max-width: 480px) {
+                .card {
+                    width: calc(100% - 40px);
+                    /* 1 card per row */
+                }
+            }
+        </style>
 
         <!-- Drag Target Area To SlideIn Menu On Small Screens -->
-        <div class="drag-target"></div>
-        <script src="{{url_for('static',filename='/vendor/libs/jquery/jquery.js')}}"></script>
-    <script src="{{url_for('static',filename='/js/tables-datatables-basic.js')}}"></script>
-    <script src="{{url_for('static',filename='/vendor/js/bootstrap.js')}}"></script>
-    <script src="{{url_for('static',filename='/vendor/js/menu.js')}}"></script>
-
-    <!-- endbuild -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 
-    <!-- Vendors JS -->
-    <script src="{{url_for('static',filename='/vendor/libs/datatables-bs5/datatables-bootstrap5.js')}}"></script>
-    <!-- Flat Picker -->
 
-    <!-- Main JS -->
-    <script src="{{url_for('static',filename='/js/main.js')}}"></script>
 
-</body>
+    </body>
 
 
 </html>

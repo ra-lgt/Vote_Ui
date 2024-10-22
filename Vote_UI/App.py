@@ -16,6 +16,7 @@ conn = sqlitecloud.connect('sqlitecloud://ct7cilkkhz.sqlite.cloud:8860/Voter?api
 def search_voter():
     search_string = request.args.get('search_string', "")
     type = request.args.get('type', "")
+    page=request.args.get('page',0)
     
     cursor = conn.cursor()
 
@@ -29,8 +30,9 @@ def search_voter():
             WHERE LOWER(e_last_name) LIKE LOWER(?) 
             OR LOWER(e_first_name) LIKE LOWER(?) 
             OR LOWER(e_middle_name) LIKE LOWER(?)
+            LIMIT ? OFFSET ?
             """, 
-            (f"%{search_string}%", f"%{search_string}%", f"%{search_string}%")
+            (f"%{search_string}%", f"%{search_string}%", f"%{search_string}%",50,int(page)*50)
         )
     else:
         cursor.execute(
@@ -40,8 +42,9 @@ def search_voter():
             l_boothaddress, e_boothaddress 
             FROM voters
             WHERE LOWER(vcardid) = LOWER(?)
+            LIMIT ? OFFSET ?
             """,
-            (search_string,)
+            (search_string,50,int(page)*50)
         )
     
     rows = cursor.fetchall()
@@ -76,4 +79,4 @@ def read_root():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
