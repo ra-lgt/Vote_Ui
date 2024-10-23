@@ -24,8 +24,8 @@ def search_voter():
         cursor.execute(
             """
             SELECT assembly_no,part_no,srno,l_last_name, l_first_name, l_middle_name, e_last_name, e_first_name, e_middle_name, sex,
-            house_no, age, vcardid, l_village, l_assemblyname, e_assemblyname, l_address, booth_no,
-            l_boothaddress
+            house_no, age, vcardid, l_village, l_assemblyname, e_assemblyname, l_address,'' as e_address, booth_no,
+            l_boothaddress,'' as e_boothaddress
             FROM voters 
             WHERE LOWER(e_last_name) LIKE LOWER(?) 
             OR LOWER(e_first_name) LIKE LOWER(?) 
@@ -38,8 +38,8 @@ def search_voter():
         cursor.execute(
             """
             SELECT assembly_no,part_no,srno,l_last_name, l_first_name, l_middle_name, e_last_name, e_first_name, e_middle_name, sex,
-            house_no, age, vcardid, l_village, e_village, l_assemblyname, e_assemblyname, l_address, booth_no,
-            l_boothaddress
+            house_no, age, vcardid, l_village, e_village, l_assemblyname, e_assemblyname, l_address,'' as e_address, booth_no,
+            l_boothaddress, '' as e_boothaddress
             FROM voters
             WHERE LOWER(vcardid) = LOWER(?)
             LIMIT ? OFFSET ?
@@ -60,7 +60,7 @@ def search_voter():
         for key in list(row_data.keys()):
             if key.startswith('e_'):
                 continue
-            if key.startswith('l_') and 'address' not in key:
+            if key.startswith('l_'):
                 e_key = 'e_' + key[2:]
                 if e_key in row_data:
                     formatted_data[key[2:]] = f"{row_data[e_key]} / {row_data[key]}"
