@@ -531,10 +531,11 @@
         <div class="cardMain" style="width: 100%;">
             <div class="card-container" id="cardContainer">
                 <!-- Initial Cards (optional, can be empty if you want to load them all via the API) -->
-                <div id="loader" class="loader" style="display: none;">
-                    <div class="loader-spinner"></div> <!-- Customize your loader as needed -->
-                </div>
+               
             </div>
+        </div>
+        <div id="loader" class="loader" style="display: none;">
+            <div class="loader-spinner"></div> <!-- Customize your loader as needed -->
         </div>
 
         <div class="content-backdrop fade"></div>
@@ -546,6 +547,7 @@
                 const searchInput = document.getElementById('search_value');
                 let currentPage = 0; // Start from page 0
                 let isLoading = false; // To track loading state
+                let noData=false
         
                 function sleep(ms) {
                     return new Promise(resolve => setTimeout(resolve, ms));
@@ -590,7 +592,12 @@
                 }
         
                 async function handleSearchVoters(event) {
+
                     if (event) {
+                        const cardContainer = document.getElementById('cardContainer');
+                        cardContainer.innerHTML=''
+                        noData=false
+                        currentPage=0
                         event.preventDefault(); // Prevent default form submission
                     }
         
@@ -599,7 +606,7 @@
         
                     document.getElementById('loader').style.display = 'block'; // Show loader
                     const data = await fetchData(currentPage, typeSelect.value, searchInput.value);
-                    const cardContainer = document.getElementById('cardContainer');
+                    
         
                     if (data && data.data.length > 0) {
                         data.data.forEach(value => {
@@ -607,7 +614,13 @@
                             cardContainer.appendChild(card);
                         });
                         currentPage++; // Increment page for next fetch
+                        if(data.data.length<49){
+                            noData=true
+                            console.log('No more data available');
+
+                        }
                     } else {
+                        noData=true
                         console.log('No more data available');
                     }
         
@@ -640,7 +653,7 @@
                 window.addEventListener('scroll', function () {
                     const scrollPosition = window.innerHeight + window.scrollY;
                     const threshold = document.body.offsetHeight - 200; // Adjust threshold as needed
-                    if (scrollPosition >= threshold && !isLoading && searchInput.value!="" && typeSelect.value!="") {
+                    if (scrollPosition >= threshold && !isLoading && searchInput.value!="" && typeSelect.value!="" && !noData) {
                         loader.style.display = 'block'; // Show loader if near bottom
                     }
                 });
