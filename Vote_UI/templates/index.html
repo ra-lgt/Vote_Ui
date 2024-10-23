@@ -82,7 +82,7 @@
                     <div class="input-field first-wrap">
                         <div class="input-select">
                             <select data-trigger="" id="choices">
-                                <option placeholder="">Search By</option>
+                             
                                 <option>Name</option>
                                 <option>vcardid</option>
 
@@ -572,19 +572,14 @@
                     card.innerHTML = `
                     <div class="card-body">
                         <h3 class="card-title">${cardData.first_name}</h3>
-                        <p class="card-text"><strong>Last Name:</strong> ${cardData.last_name}</p>
+                      
                         <p class="card-text"><strong>Middle Name:</strong> ${cardData.middle_name}</p>
-                        <p class="card-text"><strong>Sex:</strong> ${cardData.sex}</p>
-                        <p class="card-text"><strong>Age:</strong> ${cardData.age}</p>
-                        <p class="card-text"><strong>VCard ID:</strong> ${cardData.vcardid}</p>
-                        <p class="card-text"><strong>Assembly No:</strong> ${cardData.assembly_no}</p>
-                        <p class="card-text"><strong>Part No:</strong> ${cardData.part_no}</p>
-                        <p class="card-text"><strong>SR No:</strong> ${cardData.srno}</p>
+                         <p class="card-text"><strong>VCard ID:</strong> ${cardData.vcardid}</p>
+                        <p class="card-text"><strong>Part No:</strong> ${cardData.part_no} <strong>SR No:</strong> ${cardData.srno}</p>
+                        <p class="card-text"> <strong>Age/Sex:</strong> ${cardData.age}/${cardData.sex}</p>
                         <p class="card-text"><strong>House No:</strong> ${cardData.house_no}</p>
-                        <p class="card-text"><strong>Village:</strong> ${cardData.village}</p>
-                        <p class="card-text"><strong>Assembly Name:</strong> ${cardData.assemblyname}</p>
-                        <p class="card-text"><strong>Address:</strong> ${cardData.address}</p>
-                        <p class="card-text"><strong>Booth No:</strong> ${cardData.booth_no}</p>
+                     <p class="card-text"><strong>Address:</strong> ${cardData.address}</p>
+                      
                         <p class="card-text"><strong>Booth Address:</strong> ${cardData.boothaddress}</p>
                     </div>
                 `;
