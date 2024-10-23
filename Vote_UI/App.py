@@ -60,7 +60,7 @@ def search_voter():
         for key in list(row_data.keys()):
             if key.startswith('e_'):
                 continue
-            if key.startswith('l_') and "address" not in key:
+            if key.startswith('l_') and 1==1:
                 e_key = 'e_' + key[2:]
                 if e_key in row_data:
                     formatted_data[key[2:]] = f"{row_data[e_key]} / {row_data[key]}"
