@@ -561,6 +561,7 @@
                         return data
                     }
                     const apiUrl = `https://portal.voterapp.in/search_voter?search_string=${search_string}&type=${type}&page=${page}`;
+                debugger;
                     const response = await fetch(apiUrl);
                     data = await response.json();
                     return data; // Adjust according to your API response structure
