@@ -48,7 +48,7 @@
     <link href="{{url_for('static',filename='/css/main.css')}}" rel="stylesheet" />
 
     <body>
-        <div class="col-md-5 col-sm-">   <img src="{{url_for('static',filename='/images/home.jfif')}}" alt="image1"> </div>
+        <div class="header-image">   <img src="{{url_for('static',filename='/images/home.jfif')}}" alt="image1"> </div>
         <div class="s003 col-5">
             <form id="searchForm">
                 <div class="inner-form">
@@ -661,8 +661,15 @@
             .card:hover {
                 transform: scale(1.05);
             }
-
+ .header-image
+                {
+                    width: calc(100% - 40px);
+                }
             @media (max-width: 768px) {
+                .header-image
+                {
+                    width: calc(100% - 40px);
+                }
                 .card {
                     width: calc(100% - 40px);
                     /* 2 cards per row */
@@ -670,6 +677,10 @@
             }
 
             @media (max-width: 480px) {
+                 .header-image
+                {
+                    width: calc(100% - 40px);
+                }
                 .card {
                     width: calc(100% - 40px);
                     /* 1 card per row */
