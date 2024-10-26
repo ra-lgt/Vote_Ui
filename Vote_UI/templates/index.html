@@ -54,7 +54,7 @@
                 <div class="inner-form">
                     <div class="input-field first-wrap">
                         <div class="input-select">
-                            <select data-trigger="" id="choices">
+                            <select data-trigger="" id="choices" onchange="handleChange(event)">
                              
                                 <option>Name</option>
                                 <option>vcardid</option>
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="input-field second-wrap">
-                        <input type="text" placeholder="Enter Keywords?" id="search_value" />
+                        <input type="text" placeholder="Enter Name" id="search_value" />
                     </div>
                     <div class="input-field third-wrap">
                         <button class="btn-search" type="submit">
@@ -78,6 +78,19 @@
                 </div>
             </form>
         </div>
+        <script>
+            function handleChange(event){
+                console.log(event.target.value)
+                if(event.target.value=="Name"){
+                    document.getElementById('search_value').placeholder="Enter Name"
+                    
+                }
+                else if(event.target.value=="vcardid"){
+                    document.getElementById('search_value').placeholder="Enter Vcardid"
+
+                }
+            }
+        </script>
 
 
 
