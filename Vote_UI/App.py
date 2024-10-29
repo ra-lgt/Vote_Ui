@@ -16,32 +16,50 @@ conn = sqlitecloud.connect('sqlitecloud://ct7cilkkhz.sqlite.cloud:8860/Voter?api
 def search_voter():
     search_string = request.args.get('search_string', "")
     type = request.args.get('type', "")
+    page=request.args.get('page',0)
+
+    search_kinds = [word.lower() for word in search_string.split()]
     
     cursor = conn.cursor()
 
     if type == "Name":
-        cursor.execute(
-            """
-            SELECT assembly_no,part_no,srno,l_last_name, l_first_name, l_middle_name, e_last_name, e_first_name, e_middle_name, sex,
-            house_no, age, vcardid, l_village, e_village, l_assemblyname, e_assemblyname, l_address, e_address, booth_no,
-            l_boothaddress, e_boothaddress 
+        # Generate the query with multiple LIKE conditions
+        if len(search_kinds) == 1:
+            search_kinds = [search_kinds[0]] * 3
+        elif len(search_kinds) == 2:
+            search_kinds = [search_kinds[0], search_kinds[1], search_kinds[1]]
+        elif len(search_kinds) == 3:
+            search_kinds = [search_kinds[0], search_kinds[1], search_kinds[2]]
+
+        # Generate the query with multiple LIKE conditions
+        query = f"""
+            SELECT assembly_no, part_no, srno, l_last_name, l_first_name, l_middle_name, e_last_name, e_first_name, e_middle_name, sex,
+                house_no, age, vcardid, l_village, l_assemblyname, e_assemblyname, l_address, '' AS e_address, booth_no,
+                l_boothaddress, '' AS e_boothaddress
             FROM voters 
-            WHERE LOWER(e_last_name) LIKE LOWER(?) 
-            OR LOWER(e_first_name) LIKE LOWER(?) 
-            OR LOWER(e_middle_name) LIKE LOWER(?)
-            """, 
-            (f"%{search_string}%", f"%{search_string}%", f"%{search_string}%")
-        )
+            WHERE {" AND ".join(["LOWER(e_first_name) LIKE ?", "LOWER(e_middle_name) LIKE ?", "LOWER(e_last_name) LIKE ?"] * len(search_kinds))}
+            LIMIT ? OFFSET ?
+        """  
+
+        # Create wildcard search patterns
+        search_patterns = [f"%{term.lower()}%" for term in search_kinds]
+
+        # Repeat patterns for each field and add limit and offset parameters
+        params = search_patterns * 3 + [50, int(page) * 50]
+
+        # Execute the query
+        cursor.execute(query, tuple(params))
     else:
         cursor.execute(
             """
             SELECT assembly_no,part_no,srno,l_last_name, l_first_name, l_middle_name, e_last_name, e_first_name, e_middle_name, sex,
-            house_no, age, vcardid, l_village, e_village, l_assemblyname, e_assemblyname, l_address, e_address, booth_no,
-            l_boothaddress, e_boothaddress 
+            house_no, age, vcardid, l_village, e_village, l_assemblyname, e_assemblyname, l_address,'' as e_address, booth_no,
+            l_boothaddress, '' as e_boothaddress
             FROM voters
             WHERE LOWER(vcardid) = LOWER(?)
+            LIMIT ? OFFSET ?
             """,
-            (search_string,)
+            (search_string,50,int(page)*50)
         )
     
     rows = cursor.fetchall()
@@ -76,4 +94,4 @@ def read_root():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
