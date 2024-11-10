@@ -38,9 +38,9 @@ def search_voter():
         """
 
         # Prepare parameters with wildcard matching for LIKE
-        first_name_param = f"%{first_name.lower()}%"
-        middle_name_param = f"%{middle_name.lower()}%"
-        last_name_param = f"%{last_name.lower()}%"
+        first_name_param = f"{first_name.lower()}%"
+        middle_name_param = f"{middle_name.lower()}%"
+        last_name_param = f"{last_name.lower()}%"
 
         records_per_page = 50
         offset = int(page) * records_per_page
