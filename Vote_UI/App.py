@@ -17,12 +17,38 @@ def search_voter():
     search_string = request.args.get('search_string', "")
     type = request.args.get('type', "")
     page=request.args.get('page',0)
+    first_name=request.args.get('first_name','')
+    middle_name=request.args.get('middle_name','')
+    last_name=request.args.get('last_name','')
 
     search_kinds = [word.lower() for word in search_string.split()]
     
     cursor = conn.cursor()
 
-    if type == "Name":
+    if(type==''):
+        query = """
+            SELECT assembly_no, part_no, srno, l_last_name, l_first_name, l_middle_name, e_last_name, e_first_name, e_middle_name, sex,
+                house_no, age, vcardid, l_village, l_assemblyname, e_assemblyname, l_address, '' AS e_address, booth_no,
+                l_boothaddress, '' AS e_boothaddress
+            FROM voters 
+            WHERE LOWER(e_first_name) LIKE ? 
+            AND LOWER(e_middle_name) LIKE ? 
+            AND LOWER(e_last_name) LIKE ?
+            LIMIT ? OFFSET ?
+        """
+
+        # Prepare parameters with wildcard matching for LIKE
+        first_name_param = f"%{first_name.lower()}%"
+        middle_name_param = f"%{middle_name.lower()}%"
+        last_name_param = f"%{last_name.lower()}%"
+
+        records_per_page = 50
+        offset = int(page) * records_per_page
+
+        # Execute the query with parameters
+        cursor.execute(query, (first_name_param, middle_name_param, last_name_param,records_per_page, offset))
+
+    elif type == "Name":
         # Generate the query with multiple LIKE conditions
         if len(search_kinds) == 1:
             search_kinds = [search_kinds[0]] * 3
@@ -90,7 +116,7 @@ def search_voter():
 
 @app.route("/", methods=['GET'])
 def read_root():
-    return render_template('index.html')
+    return render_template('index_2.html')
 
 
 if __name__ == '__main__':
