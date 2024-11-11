@@ -747,7 +747,56 @@
         <script>
             
            
-             function shareWhatsUp() {
+      function Fn_Close() {
+        $('#exampleModal').modal('hide');
+        document.getElementById("btn_setflagFalse").onclick();
+    }
+
+ function SendSMS_Selected_Voter() {
+
+        var MobileNo = document.getElementById('txtMobileNo').value;
+
+       // InsertInToContactNoList(ConstNo, YadiBhag, SrNo, MobileNo);
+ var SrNo=  $("#txtSrNo").text() ;
+      var YadiBhag=  $("#txtBoothNo").text() ;
+      var FullName=  $("#txtName").text() ;
+      var srno=  $("#txtaddress").text() ;
+      var BoothName=  $("#txtBoothName").text() ;
+      var CardNo=  $("#txtCardNoDetails").text() ;
+
+
+        var Body = "विधानसभा: " + ACName + " \nयादी क्र:" + YadiBhag + " \nअ.क्र:" + SrNo + "\nनाव: " + FullName + "\nBooth: " + BoothName + "\n\nधन्यवाद! \nगणेश (भाऊ ) बबन गिते  \nराष्ट्रवादी काँग्रेस पक्ष शरद पवार \nचिन्ह:तुतारी वाजवणारा माणूस  "
+
+
+        // Encode message for URI
+        var encodedMessage = encodeURIComponent(Body);
+
+        // Construct SMS URI
+        var uri = 'sms://' + MobileNo + '?body=' + encodedMessage;
+
+        // Open default messaging app with pre-filled message
+        window.location.href = uri;
+
+        //<a href="sms:/* phone number here */?body=/* body text here */">Link</a>
+
+
+
+        $.get(URLStr, function (response) {
+
+            document.getElementById('txtMobileNo').value = '';
+            alert('Message Sent!');
+            Fn_Close();
+
+        }).fail(function (xhr, status, error) {
+            document.getElementById('txtMobileNo').value = '';
+            alert('Message Sent!');
+            Fn_Close();
+
+        });
+    }
+
+                 
+                 function shareWhatsUp() {
         var MobileNo = document.getElementById('txtMobileNo').value;
         
       var SrNo=  $("#txtSrNo").text() ;
@@ -766,7 +815,7 @@
         window.location = "https://api.whatsapp.com/send?&phone=+91" + document.getElementById('txtMobileNo').value + "&text=" + "विधानसभा: " + ACName + " %0a" + "यादी क्र: " + YadiBhag + " %0a" + "अ.क्र: " + SrNo + " %0a" + "नाव: *" + FullName + "* %0a" + "कार्ड नं: " + CardNo + " %0aBooth: *" + BoothName + "*%0a%0aधन्यवाद! %0a*गणेश (भाऊ ) बबन गिते*%0a*राष्ट्रवादी काँग्रेस पक्ष शरद पवार*%0a*चिन्ह: तुतारी वाजवणारा माणूस (अ.क्र.- १)*%0a%0aयेत्या विधानसभा 2024 निवडणूकीसाठी 123-नाशिक पूर्व विधानसभेत तुमचे नाव शोधायचे असल्यास *गणेश (भाऊ ) बबन गिते* ह्यांच्या माध्यमातून Voter Search Link मधून आपले व आपल्या ओळखीतील लोकांचे नाव शोधा आणि त्याचे Details Whatsapp किंवा SMS द्वारे लोकांना पाठवा. %0a%0a%0ahttps://portal.voterapp.in";
 
     }
-            function showVoterDetails(abc)
+            function showVoterDetails(abc,WA_Or_SMS)
         {
             console.log(abc);
          var name=$(abc).closest(".card").find(".name").text();
@@ -793,6 +842,17 @@
         document.getElementById("txtaddress").innerHTML = address;
         document.getElementById("txtBoothName").innerHTML = booth;
         document.getElementById("txtCardNoDetails").innerHTML = voterid;
+                  if (WA_Or_SMS == 'WA') {
+
+            document.getElementById("btnSendWhatsup").innerHTML = '<button type="button" class="btn btn-primary" onclick="shareWhatsUp()" style="color:black;background-color:#18A766;color:white; border-top-left-radius: 15px;border-bottom-left-radius: 15px;border-top-right-radius: 15px;border-bottom-right-radius: 15px;" id="SendWPData">Send To Whatsapp</button>';
+
+            document.getElementById("ID_Mobile_Heading").innerHTML = 'Enter WhatsApp No:';
+        }
+        if (WA_Or_SMS == 'SMS') {
+            document.getElementById("btnSendWhatsup").innerHTML = '<button type="button" class="btn btn-primary" onclick="SendSMS_Selected_Voter()" style="color:black;background-color: #0D6EFD;color:white; border-top-left-radius: 15px;border-bottom-left-radius: 15px;border-top-right-radius: 15px;border-bottom-right-radius: 15px;">Send SMS</button>';
+
+            document.getElementById("ID_Mobile_Heading").innerHTML = 'Enter Mobile No:';
+        }
     }
             document.addEventListener('DOMContentLoaded', () => {
                 const first_name = document.getElementById('first-name');
@@ -836,9 +896,9 @@
                       
                         <p class="card-text"><strong>Booth Address:</strong><span class="booth"> ${cardData.boothaddress}</span></p>
                     </div>
-                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="background-color:#18A766;color:white;border-color:#18A766;border-radius:30px" onclick="showVoterDetails(this);"><i style="color:white" class="fa fa-whatsapp" aria-hidden="true"></i></a>
-        
-                `;
+                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="background-color:#18A766;color:white;border-color:#18A766;border-radius:30px" onclick="showVoterDetails(this,"WA");"><i style="color:white" class="fa fa-whatsapp" aria-hidden="true"></i></a>
+       <a class="btn btn-primary" data-toggle="modal" style="background-color:#0D6EFD;color:white;border-color:#0D6EFD;border-radius:30px" data-target="#exampleModal" onclick="showVoterDetails(this,'SMS');"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+             
                     return card;
                 }
         
