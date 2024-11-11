@@ -6,6 +6,10 @@
 <html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact ">
 
 <head>
+<script>
+     ConstNo ="125" ;
+            ACName="नाशिक पश्चिम"; 
+</script?
     <meta charset="utf-8" />
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
@@ -718,7 +722,7 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <div id="btnSendWhatsup"><button type="button" class="btn btn-primary" onclick="shareWhatsUp('125','19','1166','कांकरिया सागर राजेंद्र','34','पु','नाशिक म्यूनिसिपल कॉर्पोरेशन स्कूल नं. 18 ( मातोश्री राधाबाई शांताराम बापू वावरे हाई स्कूल ), पूर्व पश्चिम इमारत क्र. 3 नवीन बिल्ड वॉचमन रूम जवळ, आनंदवली','125 - नाशिक पश्चिम ','TGY9908344')" style="color:black;background-color:#18A766;color:white; border-top-left-radius: 15px;border-bottom-left-radius: 15px;border-top-right-radius: 15px;border-bottom-right-radius: 15px;" id="SendWPData">Send To Whatsapp</button></div>
+                                        <div id="btnSendWhatsup"><button type="button" class="btn btn-primary" onclick="shareWhatsUp()" style="color:black;background-color:#18A766;color:white; border-top-left-radius: 15px;border-bottom-left-radius: 15px;border-top-right-radius: 15px;border-bottom-right-radius: 15px;" id="SendWPData">Send To Whatsapp</button></div>
                                     </div>
 
                                     <div class="col-md-3" id="btnClose">
@@ -737,6 +741,27 @@
         </div>
 
         <script>
+            
+           
+             function shareWhatsUp() {
+        var MobileNo = document.getElementById('txtMobileNo').value;
+        
+      var SrNo=  $("#txtSrNo").text() ;
+      var YadiBhag=  $("#txtBoothNo").text() ;
+      var FullName=  $("#txtName").text() ;
+      var srno=  $("#txtaddress").text() ;
+      var BoothName=  $("#txtBoothName").text() ;
+      var CardNo=  $("#txtCardNoDetails").text() ;
+     
+
+
+       // InsertInToContactNoList(ConstNo, YadiBhag, SrNo, MobileNo);
+
+      
+
+        window.location = "https://api.whatsapp.com/send?&phone=+91" + document.getElementById('txtMobileNo').value + "&text=" + "विधानसभा: " + ACName + " %0a" + "यादी क्र: " + YadiBhag + " %0a" + "अ.क्र: " + SrNo + " %0a" + "नाव: *" + FullName + "* %0a" + "कार्ड नं: " + CardNo + " %0aBooth: *" + BoothName + "*%0a%0aधन्यवाद! %0a*दिनकर धर्मा पाटील*%0a*महाराष्ट्र नवनिर्माण सेना*%0a*चिन्ह: रेल्वे इंजिन*%0a%0aयेत्या विधानसभा 2024 निवडणूकीसाठी 125-नाशिक पश्चिम विधानसभेत तुमचे नाव शोधायचे असल्यास *दिनकर धर्मा पाटील* ह्यांच्या माध्यमातून Voter Search Link मधून आपले व आपल्या ओळखीतील लोकांचे नाव शोधा आणि त्याचे Details Whatsapp किंवा SMS द्वारे लोकांना पाठवा. %0a%0a%0ahttps://dinkardharmapatil.mahatalent.in";
+
+    }
             function showVoterDetails(abc)
         {
             console.log(abc);
