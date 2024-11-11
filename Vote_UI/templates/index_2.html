@@ -625,6 +625,116 @@
 
         <div class="content-backdrop fade"></div>
         <div class="layout-overlay layout-menu-toggle"></div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Voter Details</h3>
+                        
+                    </div>
+                    <div class="modal-body">
+
+
+                        <table width="100%" border="1">
+                            <tbody><tr style="background: rgba(217,225,242,1.0); height: 30px;">
+                                <th class="text-center">Sr No.
+                                </th>
+                                <th class="text-center">Booth No
+                                </th>
+                                <th class="text-center">CardNo
+                                </th>
+
+                            </tr>
+                            </tbody><tbody>
+                                <tr style="height: 30px;">
+                                    <td id="txtSrNo" class="text-center"></td>
+                                    <td id="txtBoothNo" class="text-center"></td>
+                                    <td id="txtCardNoDetails" class="text-center"></td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <br>
+
+
+
+
+
+
+                        
+                        
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    
+                                    <label id="txtName" style="font-size: 18px;"></label>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p style="font-size: 15px;">Address: </p>
+                                    <label id="txtaddress"></label>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p style="font-size: 15px;">Booth Name :</p>
+                                    <label id="txtBoothName"></label>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 id="ID_Mobile_Heading" style="color: red">Enter WhatsApp No:</h4>
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <input type="text" class="form-control" id="txtMobileNo" placeholder="" name="">
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <center>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div id="btnSendWhatsup" class="col-md-2"><button type="button" class="btn btn-primary" onclick="shareWhatsUp('125','19','1166','कांकरिया सागर राजेंद्र','34','पु','नाशिक म्यूनिसिपल कॉर्पोरेशन स्कूल नं. 18 ( मातोश्री राधाबाई शांताराम बापू वावरे हाई स्कूल ), पूर्व पश्चिम इमारत क्र. 3 नवीन बिल्ड वॉचमन रूम जवळ, आनंदवली','125 - नाशिक पश्चिम ','TGY9908344')" style="color:black;background-color:#18A766;color:white; border-top-left-radius: 15px;border-bottom-left-radius: 15px;border-top-right-radius: 15px;border-bottom-right-radius: 15px;" id="SendWPData">Send To Whatsapp</button></div>
+                                    </div>
+
+                                    <div class="col-md-2" id="btnClose">
+                                        <button type="button" class="btn btn-secondary" onclick="Fn_Close();">Close</button>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script>
             function showVoterDetails(abc)
