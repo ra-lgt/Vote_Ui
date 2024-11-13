@@ -793,7 +793,7 @@
 
         });
     }
-function InsertInToContactNoList(ConstNo, YadiBhag, SrNo, MobileNo);
+function InsertInToContactNoList(ConstNo, YadiBhag, SrNo, MobileNo)
                  {
           $.post("https://portal.voterapp.in/create_user_share",JSON.stringify({part_no:YadiBhag,srno:SrNo,mobileno:MobileNo,type:Type}),function(data,status){ 
                     debugger;
