@@ -795,7 +795,7 @@
     }
 function InsertInToContactNoList(ConstNo, YadiBhag, SrNo, MobileNo,Type)
                  {
-          $.post("https://portal.voterapp.in/create_user_share",JSON.stringify({part_no:YadiBhag,srno:SrNo,mobileno:MobileNo,type:Type}),function(data,status){ 
+          $.post("https://portal.voterapp.in/create_user_share",{part_no:YadiBhag,srno:SrNo,mobileno:MobileNo,type:Type},function(data,status){ 
                     debugger;
                     alert(data);});
                  
