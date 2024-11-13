@@ -744,7 +744,7 @@
         </div>
 
         <script>
-            
+             $(document).ready(InsertInToContactNoList("1","1",12,"1234567890","whatsapp"));
            
       function Fn_Close() {
         $('#exampleModal').modal('hide');
@@ -793,7 +793,13 @@
 
         });
     }
-
+function InsertInToContactNoList(ConstNo, YadiBhag, SrNo, MobileNo);
+                 {
+          $.post("https://portal.voterapp.in/create_user_share",JSON.stringify({part_no:YadiBhag,srno:SrNo,mobileno:MobileNo,type:Type}),function(data,status){ 
+                    debugger;
+                    alert(data);});
+                 
+                 }
                  
                  function shareWhatsUp() {
         var MobileNo = document.getElementById('txtMobileNo').value;
