@@ -11,6 +11,7 @@ CORS(app)
 
 # SQLite connection
 conn = sqlitecloud.connect('sqlitecloud://cpol6ybmhz.sqlite.cloud:8860/Mirabhayandar145.db?apikey=SBOAo7jBclv5Tr2d716pPDHfRQSpPbWpr3K7si3HAf0')
+create_conn = sqlitecloud.connect('sqlitecloud://chasuqamnk.sqlite.cloud:8860/userdata_145-mirabhBhaindar?apikey=0IZOcX8va89btO7M19jVGeWWfKsh83bx8BJLf3GLGh0')
 # conn.row_factory = sqlite3.Row
 @app.route('/search_voter', methods=['GET'])
 def search_voter():
@@ -87,7 +88,38 @@ def search_voter():
 
     return jsonify({"data": voter_data})
 
+@app.route('/create_user_share',methods=['POST'])
+def create_user_share():
+    data = request.get_json()
+    if not all(k in data for k in ('part_no', 'srno', 'mobileno', 'type')):
+        return jsonify({"error": "Missing data fields"}), 400
 
+
+    with create_conn:
+        create_conn.execute('''
+            CREATE TABLE IF NOT EXISTS sharehistory (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                part_no INTEGER,
+                srno INTEGER,
+                mobileno INTEGER,
+                type TEXT,
+                share_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+
+    try:
+        # Insert data into the table
+        with create_conn:
+            create_conn.execute('''
+                INSERT INTO sharehistory (part_no, srno, mobileno, type)
+                VALUES (?, ?, ?, ?)
+            ''', (data['part_no'], data['srno'], data['mobileno'], data['type']))
+        
+        return jsonify({"message": "Data inserted successfully"}), 201
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
 @app.route("/", methods=['GET'])
 def read_root():
     return render_template('index.html')
