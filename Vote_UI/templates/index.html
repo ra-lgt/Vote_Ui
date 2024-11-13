@@ -546,7 +546,7 @@
                     if(type=="" || search_string==""){
                         return data
                     }
-                    const apiUrl = `https://portal.voterapp.in/search_voter?search_string=${search_string}&type=${type}&page=${page}`;
+                    const apiUrl = `https://mirabhayandar.voterapp.in/search_voter?search_string=${search_string}&type=${type}&page=${page}`;
                 debugger;
                     const response = await fetch(apiUrl);
                     data = await response.json();
