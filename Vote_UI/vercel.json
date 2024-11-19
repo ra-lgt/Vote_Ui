@@ -5,6 +5,11 @@
     ],
     "routes": [
       { "src": "/(.*)", "dest": "App.py" }
-    ] 
+    ] ,
+     "functions": {
+    "App.py": {
+      "maxDuration":60 // All functions can run for a maximum of 5 seconds
+    }
+  }
   }
   
