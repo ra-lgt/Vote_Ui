@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
+
+import sys
 import sqlite3
 import sqlitecloud
 
@@ -10,7 +12,7 @@ app = Flask(__name__)
 CORS(app)
 
 # SQLite connection
-conn = sqlitecloud.connect('')
+conn = sqlitecloud.connect('sqlitecloud://ccmxvccgnz.sqlite.cloud:8860/Mirabhayandar145_MNS.db?apikey=iAqgFkpYBHi4hS2ClQke99rnvfSKH6iUPyyDwABRSmE')
 create_conn = sqlitecloud.connect('sqlitecloud://chasuqamnk.sqlite.cloud:8860/userdata_145-mirabhBhaindar?apikey=0IZOcX8va89btO7M19jVGeWWfKsh83bx8BJLf3GLGh0')
 # conn.row_factory = sqlite3.Row
 @app.route('/search_voter', methods=['GET'])
@@ -46,8 +48,9 @@ def search_voter():
         search_patterns = [f"%{term.lower()}%" for term in search_kinds]
 
         # Repeat patterns for each field and add limit and offset parameters
-        params = search_patterns * 3 + [50, int(page) * 50]
-
+        params = search_patterns  + [50, int(page) * 50]
+        print(params)
+        print('hellow',file=sys.stderr)
         # Execute the query
         cursor.execute(query, tuple(params))
     else:
@@ -123,5 +126,6 @@ def create_user_share():
 @app.route("/", methods=['GET'])
 def read_root():
     return render_template('index.html')
+
 
 
