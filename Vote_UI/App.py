@@ -38,7 +38,7 @@ def search_voter():
                 house_no, age, vcardid, l_village, l_assemblyname, e_assemblyname, l_address, '' AS e_address, booth_no,
                 l_boothaddress, '' AS e_boothaddress
             FROM voters 
-            WHERE {" AND ".join(["LOWER(e_first_name) LIKE ?", "LOWER(e_middle_name) LIKE ?", "LOWER(e_last_name) LIKE ?"] * len(search_kinds))}
+            WHERE {" AND ".join(["LOWER(full_name) LIKE ?", "LOWER(full_name) LIKE ?", "LOWER(full_name) LIKE ?"] * len(search_kinds))}
             LIMIT ? OFFSET ?
         """  
 
