@@ -14,7 +14,7 @@ conn = sqlitecloud.connect('sqlitecloud://ccmxvccgnz.sqlite.cloud:8860/Mirabhaya
 create_conn = sqlitecloud.connect('sqlitecloud://chasuqamnk.sqlite.cloud:8860/userdata_145-mirabhBhaindar?apikey=0IZOcX8va89btO7M19jVGeWWfKsh83bx8BJLf3GLGh0')
 # conn.row_factory = sqlite3.Row
 @app.route('/search_voter', methods=['GET'])
-def search_voter():
+def search_voter1():
     search_string = request.args.get('search_string', "")
     type = request.args.get('type', "")
     page=request.args.get('page',0)
